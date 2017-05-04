@@ -111,4 +111,9 @@ public class MainActivity extends AppCompatActivity {
         void onSuccess(String result);
     }
 
+    public void refreshView()
+    {
+
+    }
+
 }

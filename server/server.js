@@ -51,8 +51,11 @@
 
 	app.post('/addParent', function(req,res) {
 
-		var parentId = req.body.parentId;
-		var childId = req.body.childId;
+		var parentName = req.body.selectCategory;
+		var childName = req.body.selectWord;
+		var parentId = getIdByText(parentName);
+		var childId = getIdByText(childName) ; 
+
 		addChild(parentId,childId);
 		res.sendFile(__dirname + '/html/addWord.html')
 		
@@ -65,10 +68,22 @@
 		
 	});
 
-	app.post(/.makeRoot_*/, function(req,res) {
+	app.post('/makeRoot', function(req,res) {
 
-	var wordId =  req.originalUrl.substr('/makeRoot_'.length);
-	makeRoot(wordId);
+	var word =  req.body.selectTopCategory;
+	
+	var wordId = getIdByText(word);
+	setRoot(wordId,'true');
+	res.sendFile(__dirname + '/html/index.html');
+	});
+
+	app.post('/removeRoot', function(req,res) {
+
+	var word =  req.body.rootToRemove;
+
+	var wordId = getIdByText(word);
+	setRoot(wordId,'false');
+	res.sendFile(__dirname + '/html/index.html');
 	});
 
 
@@ -76,6 +91,13 @@
 		var roots = getRoots();
 		res.setHeader('Content-Type', 'application/json')
 		res.send(JSON.stringify(roots));
+
+	});
+
+	app.get('/getAllCategories', function(req,res) {
+	var categories = getAll();
+	res.setHeader('Content-Type', 'application/json')
+	res.send(JSON.stringify(categories));
 
 	});
 
@@ -125,7 +147,7 @@ function addWord(word, imageSrc, id){
 
    		 }
    		 //append child.
-   		 console.log(childrenStr +','+childId);
+   		 
   		 db.set('words['+i+'].children',childrenStr +','+childId )
  		 .write()
   	 	 }
@@ -147,7 +169,7 @@ function getChildrenOf(parentId){
 		   	 	for(var j=0; j<childrenId.length;j++){
 		   	 		var obj =  getWordById(childrenId[j]);
 		   	 		childrenArr.push(obj);
-		   	 		console.log(childrenArr[j]);
+		   	 		
 		   	 	}	
 		   	 	return childrenArr;
    
@@ -164,12 +186,30 @@ function getChildrenOf(parentId){
  	for(var i = 0; i < words.length; i++) {
    	 var obj = words[i];
    	 if(obj.wordId==wordId){
-   	 	console.log(obj);
+   	 
    	 	return obj;
 	 } 	
 
  }
 }
+
+ function getIdByText(text){
+ 	const low = require('lowdb')
+    const db = low('db.json'); 	
+ 	var words = db.get('words').write();
+ 	
+ 	for(var i = 0; i < words.length; i++) {
+   	 var obj = words[i];
+   	 if(obj.text==text){
+   	 	;
+   	 	return obj.wordId;
+	 } 	
+
+ }
+}
+
+
+
 
 function getRoots(){
 
@@ -186,12 +226,10 @@ function getRoots(){
 
  	}
  	return roots;
-
-
-
 }
 
-function makeRoot(wordId){
+function setRoot(wordId, value){
+	
 	const low = require('lowdb')
     const db = low('db.json'); 	
  	var words = db.get('words').write();
@@ -199,9 +237,18 @@ function makeRoot(wordId){
  	for(var i = 0; i < words.length; i++) {
    	 var obj = words[i];
    	 if(obj.wordId==wordId){
-  		 db.set('words['+i+'].isRoot',"true")
+  		 db.set('words['+i+'].isRoot',value)
  		 .write()
   	 	 }
    
 	 } 	
 }
+
+function getAll(){
+
+	const low = require('lowdb')
+    const db = low('db.json'); 	
+ 	var words = db.get('words').write();
+ 	return words;
+ }
+

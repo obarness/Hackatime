@@ -2,17 +2,129 @@
 	<head>
 	<meta charset="utf-8"/>
 	<title> Hackatime</title>
-	
+
 	</head>
 
 	<body>
 		<form  id="newWord" name="newWord" action="/addWord" method="post">
 			<label id="word">word</label>
 			<input type="text"   name="word"/>
-			<label id="image">image:</label>
+			<label id="image">imageUrl:</label>
 			<input type="text" name="image"/> </input>
-			<input type="submit" value="Submit" />	</input>
+			<input type="submit" value="addWord" />	</input>
 		</form>
+
+		
+
+		<form  id="makeRoot" name="makeRoot" action="/makeRoot" method="post">
+			<select id="selectTopCategory" name="selectTopCategory">
+		   		 <option>selectWord</option>
+			  </select>
+			<input type="submit" value="makeRoot" />	</input>
+		</form>
+
+
+		<form  id="removeRoot" name="removeRoot" action="/removeRoot" method="post">
+			<select id="rootToRemove" name="rootToRemove">
+		   		 <option>rootToRemove</option>
+			  </select>
+			<input type="submit" value="removeRoot" />	</input>
+		</form>
+
+
+		<form id="myForm"  name="myForm" action="/addParent" method="post">
+		 <select id="selectWord" name="selectWord">
+		    <option>selectWord</option>
+		  </select>
+		   <select id="selectCategory" name="selectCategory">
+		     <option>selectCategory</option>
+		  </select>
+		  <input type="submit" value="addParent" />	</input>
+		</form>
+
+
+
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myArr = JSON.parse(this.responseText);
+        var textArray = [];
+        for(var i = 0; i < myArr.length; i++){
+        	textArray[i] = myArr[i].text;
+        }
+        textArray.sort();
+
+        var select = document.getElementById("selectWord"); 
+
+
+
+		for(var i = 0; i < textArray.length; i++) {
+		    var opt = textArray[i];
+		    var el = document.createElement("option");
+		    el.textContent = opt;
+		    el.value = opt;
+		    select.appendChild(el);
+
+
+   		 }
+
+   		select = document.getElementById("selectCategory"); 
+   		  
+		for(var i = 0; i < textArray.length; i++) {
+		    var opt = textArray[i];
+		    var el = document.createElement("option");
+		    el.textContent = opt;
+		    el.value = opt;
+		    select.appendChild(el);
+
+   		 }
+
+   		 select = document.getElementById("selectTopCategory"); 
+
+   		  textArray =[];
+   		 var j =0;
+   		  for(var i = 0; i < myArr.length; i++){
+   		  	if(myArr[i].isRoot == 'false')
+        		textArray[j++] = myArr[i].text;
+       	 }
+   		  
+		for(var i = 0; i < textArray.length; i++) {
+		   var opt = textArray[i];
+		    var el = document.createElement("option");
+		    el.textContent = opt;
+		    el.value = opt;
+		    select.appendChild(el);
+
+   		 }
+
+   		 select = document.getElementById("rootToRemove"); 
+   		 textArray =[];
+   		 var j =0;
+   		  for(var i = 0; i < myArr.length; i++){
+   		  	if(myArr[i].isRoot == 'true')
+        		textArray[j++] = myArr[i].text;
+       	 }
+   		  
+		for(var i = 0; i < textArray.length; i++) {
+		   var opt = textArray[i];
+		   var el = document.createElement("option");
+		    el.textContent = opt;
+		    el.value = opt;
+		    select.appendChild(el);
+
+   		 }
+
+
+   		 	
+
+};
+}
+xmlhttp.open("GET", "getAllCategories", true);
+xmlhttp.send();
+
+</script>
 
 
 	</body>

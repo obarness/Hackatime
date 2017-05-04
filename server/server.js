@@ -21,7 +21,7 @@
 	        });
 
 	httpServer.on('listening', function (){
-			console.log("server is running access on: https://localhost:" + httpServer.address().port);
+			console.log("server is running access on: http://localhost:" + httpServer.address().port);
 	        	
 	});
 
@@ -44,10 +44,12 @@
 		var word = req.body.word;
 		var imageSrc = req.body.image;
 		addWord(word, imageSrc, getNextId());
-		res.sendFile(__dirname + '/html/addWord.html');
+		res.sendFile(__dirname + '/html/index.html');
 
 		
 	});
+
+
 
 	app.post('/addParent', function(req,res) {
 
@@ -57,7 +59,7 @@
 		var childId = getIdByText(childName) ; 
 
 		addChild(parentId,childId);
-		res.sendFile(__dirname + '/html/addWord.html')
+		res.end();
 		
 	});
 
@@ -101,6 +103,22 @@
 
 	});
 
+	app.get('/getTopTen', function(req,res) {
+		var topTen = getTopTen();
+		res.setHeader('Content-Type', 'application/json')
+		res.send(JSON.stringify(topTen));
+
+	});
+
+	app.post('/incrementCounter', function(req,res) {
+
+		var wordId = req.body.wordId;
+		incrementCounter(wordId);
+
+	});
+
+
+
 
 
 
@@ -110,7 +128,7 @@ function addWord(word, imageSrc, id){
 
 	// Add a post 
 	db.get('words')
-	  .push({ text: word, imageSource: imageSrc, wordId: id, children: "", isRoot: "false" })
+	  .push({ text: word, imageSource: imageSrc, wordId: id, children: "", isRoot: "false", requestCount: '0'})
 	  .write();
  }
 
@@ -252,3 +270,41 @@ function getAll(){
  	return words;
  }
 
+function getTopTen(){
+	const low = require('lowdb')
+    const db = low('db.json'); 	
+ 	var words = db.get('words').write();
+ 	words.sort(function(a, b) {
+    return parseInt(b.requestCount) - parseInt(a.requestCount);
+	});
+
+
+
+ 	var stop = Math.min(10,words.length)
+ 	var topTen = [];
+ 	for(var i = 0; i < stop; i++) {
+	   	 var obj = words[i];
+	   	 topTen.push(obj);
+	 } 	
+	 return topTen;
+
+}
+
+function incrementCounter(wordId){
+	const low = require('lowdb')
+    const db = low('db.json'); 	
+ 	var words = db.get('words').write();
+ 	
+ 	for(var i = 0; i < words.length; i++) {
+   	 var obj = words[i];
+   	 
+   	 if(obj.wordId==wordId){
+   	 	var counter = parseInt(obj.requestCount)+1;
+  		 db.set('words['+i+'].requestCount',counter.toString())
+ 		 .write()
+  	 	 }
+   
+	 } 	
+
+
+}

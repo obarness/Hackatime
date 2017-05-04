@@ -196,7 +196,6 @@ function makeRoot(wordId){
     const db = low('db.json'); 	
  	var words = db.get('words').write();
  	
-
  	for(var i = 0; i < words.length; i++) {
    	 var obj = words[i];
    	 if(obj.wordId==wordId){
@@ -205,5 +204,4 @@ function makeRoot(wordId){
   	 	 }
    
 	 } 	
-
 }

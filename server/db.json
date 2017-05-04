@@ -11,7 +11,7 @@
       "text": "silverware",
       "imageSource": "http://www.topvaluereviews.net/wp-content/uploads/2016/03/71rXrpLjA-L._SL1500_.jpg",
       "wordId": 2,
-      "children": "",
+      "children": ",5,6,7,8",
       "isRoot": "false"
     },
     {
@@ -40,7 +40,7 @@
       "imageSource": "http://kindersay.com/files/images/fork.png",
       "wordId": 6,
       "children": "",
-      "isRoot": "true"
+      "isRoot": "false"
     },
     {
       "text": "knife",

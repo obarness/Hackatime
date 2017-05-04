@@ -9,59 +9,42 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String words[] = {
-            "כסא",
-            "חתול",
-            "בית",
-            "כסא",
-            "חתול",
-            "בית",
-            "כסא",
-            "חתול",
-            "בית",
-            "כסא",
-            "חתול",
-            "בית",
-    };
-
-    private final String words_image_urls[] = {
-            "http://www.asha-gabay.co.il/_Uploads/dbsArticles/11500(2).jpg",
-            "http://www.best-friends.co.il/f-users/user_105106/website_105116/images/thumbs/W_960_6824-25.jpg",
-            "http://www.psagotmerkaz.org/wp-content/uploads/2015/01/p17hjafm6p1r1c1pt3d4rr6ddmp1.jpg",
-            "http://www.asha-gabay.co.il/_Uploads/dbsArticles/11500(2).jpg",
-            "http://www.best-friends.co.il/f-users/user_105106/website_105116/images/thumbs/W_960_6824-25.jpg",
-            "http://www.psagotmerkaz.org/wp-content/uploads/2015/01/p17hjafm6p1r1c1pt3d4rr6ddmp1.jpg",
-            "http://www.asha-gabay.co.il/_Uploads/dbsArticles/11500(2).jpg",
-            "http://www.best-friends.co.il/f-users/user_105106/website_105116/images/thumbs/W_960_6824-25.jpg",
-            "http://www.psagotmerkaz.org/wp-content/uploads/2015/01/p17hjafm6p1r1c1pt3d4rr6ddmp1.jpg",
-            "http://www.asha-gabay.co.il/_Uploads/dbsArticles/11500(2).jpg",
-            "http://www.best-friends.co.il/f-users/user_105106/website_105116/images/thumbs/W_960_6824-25.jpg",
-            "http://www.psagotmerkaz.org/wp-content/uploads/2015/01/p17hjafm6p1r1c1pt3d4rr6ddmp1.jpg",
-    };
+    private String jsonStr;
+    HashMap<String, String> words = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViews();
 
-        // example of how to pull data from server
-        // result will hold a string of the json data
-        getHttpQuery("http://172.22.6.60:5000/test",new VolleyCallback(){
+
+        //example of how to pull data from server
+        //result will hold a string of the json data
+        getHttpQuery("http://172.22.6.60/getRoots",new VolleyCallback(){
            @Override
             public void onSuccess(String result){
-                System.out.println(result);
+               jsonStr = new String(result);
+               jsonStringToArrays(jsonStr);
+               initViews();
             }
         });
+
+
     }
     private void initViews(){
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
@@ -75,12 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private ArrayList<WordCard> prepareData(){
-
         ArrayList<WordCard> word_cards = new ArrayList<>();
-        for(int i=0;i<words.length;i++){
+        Set set = words.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+            Map.Entry mentry = (Map.Entry)iterator.next();
             WordCard wordcard = new WordCard();
-            wordcard.setWord_text(words[i]);
-            wordcard.setWord_image_url(words_image_urls[i]);
+            wordcard.setWord_text(mentry.getKey().toString());
+            wordcard.setWord_image_url(mentry.getValue().toString());
             word_cards.add(wordcard);
         }
         return word_cards;
@@ -91,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         // Request a string response from the provided URL.
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        callback.onSuccess(response.toString());
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        callback.onSuccess(response.toString());
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -111,9 +96,23 @@ public class MainActivity extends AppCompatActivity {
         void onSuccess(String result);
     }
 
+<<<<<<< HEAD
     public void refreshView()
     {
 
     }
 
+=======
+    private void jsonStringToArrays(String str){
+        try {
+            JSONArray jsonArr = new JSONArray(str);
+            for(int i=0;i<jsonArr.length();i++){
+                JSONObject e = jsonArr.getJSONObject(i);
+                words.put(e.getString("text"),e.getString("imageSource"));
+            }
+        } catch (final JSONException e) {
+            System.out.println("Json parsing error: " + e.getMessage());
+        }
+    }
+>>>>>>> cbab6d9752ce7162c68c3373f0a8a95871e51f7e
 }

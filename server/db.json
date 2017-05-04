@@ -1,0 +1,61 @@
+{
+  "words": [
+    {
+      "text": "kitchen",
+      "imageSource": "http://travisperkins.scene7.com/is/image/travisperkins/ready-to-fit-kitchen-Orlando-White-IMG-Main?wid=710",
+      "wordId": 1,
+      "children": ",2,4",
+      "isRoot": "true"
+    },
+    {
+      "text": "silverware",
+      "imageSource": "http://www.topvaluereviews.net/wp-content/uploads/2016/03/71rXrpLjA-L._SL1500_.jpg",
+      "wordId": 2,
+      "children": ",5,6,7,8",
+      "isRoot": "false"
+    },
+    {
+      "text": "garden",
+      "imageSource": "http://theunboundedspirit.com/wp-content/uploads/2013/11/flower-garden.jpg",
+      "wordId": 3,
+      "children": "",
+      "isRoot": "true"
+    },
+    {
+      "text": "fridge",
+      "imageSource": "https://s-media-cache-ak0.pinimg.com/736x/b1/9f/4c/b19f4c9303325f8b13aa96f652c4c278.jpg",
+      "wordId": 4,
+      "children": "",
+      "isRoot": "false"
+    },
+    {
+      "text": "spoon",
+      "imageSource": "http://www.peterhof.cc/1349/dinner-spoon-6pcs.jpg",
+      "wordId": 5,
+      "children": "",
+      "isRoot": "false"
+    },
+    {
+      "text": "fork",
+      "imageSource": "http://kindersay.com/files/images/fork.png",
+      "wordId": 6,
+      "children": "",
+      "isRoot": "false"
+    },
+    {
+      "text": "knife",
+      "imageSource": "http://clipground.com/images/knife-clipart-6.jpg",
+      "wordId": 7,
+      "children": "",
+      "isRoot": "false"
+    },
+    {
+      "text": "teaspoon",
+      "imageSource": "https://thinkslimmer.files.wordpress.com/2013/01/teaspoon.jpg",
+      "wordId": 8,
+      "children": "",
+      "isRoot": "false"
+    }
+  ],
+  "nextId": 10
+}

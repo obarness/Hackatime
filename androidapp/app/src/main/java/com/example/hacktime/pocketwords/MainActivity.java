@@ -9,7 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -17,52 +17,34 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String jsonTestString = "[{" +
-            "\t\"text\": \"kitchen\"," +
-            "\t\"imageSource\": \"http://travisperkins.scene7.com/is/image/travisperkins/ready-to-fit-kitchen-Orlando-White-IMG-Main?wid=710\"," +
-            "\t\"wordId\": 1," +
-            "\t\"children\": \",2,4\"," +
-            "\t\"isRoot\": \"true\"" +
-            "}, {" +
-            "\t\"text\": \"garden\"," +
-            "\t\"imageSource\": \"http://theunboundedspirit.com/wp-content/uploads/2013/11/flower-garden.jpg\"," +
-            "\t\"wordId\": 3," +
-            "\t\"children\": \"\"," +
-            "\t\"isRoot\": \"true\"" +
-            "}]";
-    //private String words[] = {};
-    //List<String> words = new ArrayList<>();
-     HashMap<String, String> words = new HashMap<>();
-
-
-    //private String words_image_urls[] = {};
-    //List<String> words_image_urls = new ArrayList<>();
-
+    private String jsonStr;
+    HashMap<String, String> words = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        jsonStringToArrays();
-        initViews();
 
-        // example of how to pull data from server
-        // result will hold a string of the json data
-       // getHttpQuery("http://172.22.6.60:5000/test",new VolleyCallback(){
-       //    @Override
-        //    public void onSuccess(String result){
-         //       System.out.println(result);
-          //  }
-        //});
+
+        //example of how to pull data from server
+        //result will hold a string of the json data
+        getHttpQuery("http://172.22.6.60/getRoots",new VolleyCallback(){
+           @Override
+            public void onSuccess(String result){
+               jsonStr = new String(result);
+               jsonStringToArrays(jsonStr);
+               initViews();
+            }
+        });
+
+
     }
     private void initViews(){
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
@@ -94,10 +76,11 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         // Request a string response from the provided URL.
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         callback.onSuccess(response.toString());
                     }
                 }, new Response.ErrorListener() {
@@ -113,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
         void onSuccess(String result);
     }
 
-    private void jsonStringToArrays(){
+    private void jsonStringToArrays(String str){
         try {
-            JSONArray jsonArr = new JSONArray(jsonTestString);
+            JSONArray jsonArr = new JSONArray(str);
             for(int i=0;i<jsonArr.length();i++){
                 JSONObject e = jsonArr.getJSONObject(i);
                 words.put(e.getString("text"),e.getString("imageSource"));

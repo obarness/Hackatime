@@ -96,12 +96,13 @@ public class MainActivity extends AppCompatActivity {
         void onSuccess(String result);
     }
 
+<<<<<<< HEAD
     public void refreshView()
     {
 
     }
 
-
+=======
     private void jsonStringToArrays(String str){
         try {
             JSONArray jsonArr = new JSONArray(str);
@@ -113,5 +114,5 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Json parsing error: " + e.getMessage());
         }
     }
-
+>>>>>>> cbab6d9752ce7162c68c3373f0a8a95871e51f7e
 }

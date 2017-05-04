@@ -20,7 +20,7 @@ public class WordGrid extends RecyclerView.Adapter<WordGrid.ViewHolder> {
 
     public static final String WORD_TEXT = "com.example.hacktime.pocketwords.TEXT";
     public static final String WORD_IMG = "com.example.hacktime.pocketwords.IMG_URL";
-    public static final String WORD_ID = "com.example.hacktime.pocketwords.ID_WORD";
+   // public static final String WORD_ID = "com.example.hacktime.pocketwords.ID_WORD";
 
     public WordGrid(Context context,ArrayList<WordCard> word_cards) {
         this.word_cards = word_cards;
@@ -49,12 +49,12 @@ public class WordGrid extends RecyclerView.Adapter<WordGrid.ViewHolder> {
             }
 
         });
-        viewHolder.id_word.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+       // viewHolder.id_word.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+           // public void onClick(View v) {
 
-            }
-        });
+          //  }
+       // });
     }
 
     @Override
@@ -65,7 +65,7 @@ public class WordGrid extends RecyclerView.Adapter<WordGrid.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView text_word;
         private ImageView img_word;
-        private Button id_word;
+     //   private Button id_word;
         public ViewHolder(View view) {
             super(view);
 

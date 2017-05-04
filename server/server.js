@@ -63,10 +63,11 @@
 		
 	});
 
-		app.get(/.getChildrenOf_*/, function(req,res) {
+		app.get('/getChildrenOf/:id', function(req,res) {
 
-		var parentId =  req.originalUrl.substr('/getChildrenOf_'.length);
-		var response = getChildrenOf(parentId);
+		//var parentId =  req.originalUrl.substr('/getChildrenOf_'.length);
+		var response = getChildrenOf(req.params.id);
+		res.sendStatus(response);
 		
 	});
 

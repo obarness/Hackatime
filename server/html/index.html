@@ -95,6 +95,8 @@ xmlhttp.onreadystatechange = function() {
    		  	if(myArr[i].isRoot == 'false')
         		textArray[j++] = myArr[i].text;
        	 }
+		textArray.sort();
+
    		  
 		for(var i = 0; i < textArray.length; i++) {
 		   var opt = textArray[i];
@@ -112,6 +114,7 @@ xmlhttp.onreadystatechange = function() {
    		  	if(myArr[i].isRoot == 'true')
         		textArray[j++] = myArr[i].text;
        	 }
+		textArray.sort();
    		  
 		for(var i = 0; i < textArray.length; i++) {
 		   var opt = textArray[i];

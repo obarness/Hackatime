@@ -67,6 +67,8 @@
 
 		var parentId =  req.originalUrl.substr('/getChildrenOf_'.length);
 		var response = getChildrenOf(parentId);
+		res.send(JSON.stringify(response));
+
 		
 	});
 
@@ -182,16 +184,18 @@ function getChildrenOf(parentId){
 
  	for(var i = 0; i < words.length; i++) {
 	   	 var obj = words[i];
-	   	 if(obj.wordId==parentId){
-		   	 	var childrenId = obj.children.split(",");
-		   	 	for(var j=0; j<childrenId.length;j++){
-		   	 		var obj =  getWordById(childrenId[j]);
-		   	 		childrenArr.push(obj);
-		   	 		
-		   	 	}	
-		   	 	return childrenArr;
+		   	 if(obj.wordId==parentId){
+			   	 	var childrenId = obj.children.substr(1).split(",");
+			   	 	for(var j=0; j<childrenId.length;j++){
+			   	 		var obj =  getWordById(childrenId[j]);
+			   	 		childrenArr.push(obj);
+			   	 		
+			   	 	}	
+			   	 	
+			   	 	return childrenArr;
    
 	 } 	
+	
 	 }
 }
 

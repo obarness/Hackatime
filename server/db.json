@@ -4,7 +4,7 @@
       "text": "kitchen",
       "imageSource": "http://travisperkins.scene7.com/is/image/travisperkins/ready-to-fit-kitchen-Orlando-White-IMG-Main?wid=710",
       "wordId": 1,
-      "children": ",2,4",
+      "children": ",2,4,14",
       "isRoot": "true",
       "requestCount": "2"
     },
@@ -20,7 +20,7 @@
       "text": "garden",
       "imageSource": "http://theunboundedspirit.com/wp-content/uploads/2013/11/flower-garden.jpg",
       "wordId": 3,
-      "children": "",
+      "children": ",15,16",
       "isRoot": "true",
       "requestCount": "0"
     },
@@ -28,7 +28,7 @@
       "text": "fridge",
       "imageSource": "https://s-media-cache-ak0.pinimg.com/736x/b1/9f/4c/b19f4c9303325f8b13aa96f652c4c278.jpg",
       "wordId": 4,
-      "children": "",
+      "children": ",11,10,12,13",
       "isRoot": "false",
       "requestCount": "0"
     },
@@ -63,7 +63,159 @@
       "children": "",
       "isRoot": "false",
       "requestCount": "0"
+    },
+    {
+      "text": "fruit",
+      "imageSource": "http://weknowyourdreams.com/image.php?pic=/images/fruit/fruit-07.jpg",
+      "wordId": 10,
+      "children": ",20,21,22,23,24",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "vegtbales",
+      "imageSource": "https://blogs.extension.iastate.edu/spendsmart/files/2014/06/vegetables-variety.jpg",
+      "wordId": 11,
+      "children": ",25,26,27,28",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "dairy",
+      "imageSource": "http://svsaqua.com/wp-content/uploads/2013/09/dairy-products.jpg",
+      "wordId": 12,
+      "children": ",17,18,19",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "beverages",
+      "imageSource": "http://huntrextrading.com/brands/38/products/11/soft-drinks4-1260x840.jpg",
+      "wordId": 13,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "kitchen-tools",
+      "imageSource": "http://www.fine-arts-print.com/wp-content/uploads/2014/11/kitchen-tools.jpg",
+      "wordId": 14,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "gardening-tools",
+      "imageSource": "https://s-media-cache-ak0.pinimg.com/originals/b3/2c/48/b32c483224fce922406090fb8b852c31.jpg",
+      "wordId": 15,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "flora",
+      "imageSource": "https://www.gibraltar.gov.gi/new/images/04_Page/5_0/3_Flora_Fauna_Footer_630x300.jpg",
+      "wordId": 16,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "cheese",
+      "imageSource": "https://theproteinbreadco.com.au/wp-content/uploads/2017/04/Cheese-all.jpg",
+      "wordId": 17,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "milk",
+      "imageSource": "http://www.legendairy.com.au/~/media/legendairy/images/lhp/milk-carton-thumbnail.jpg?h=600&la=en&w=600",
+      "wordId": 18,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "yogurt",
+      "imageSource": "http://www.mybetterlife.ca/wp-content/uploads/2016/03/chobani-yogurt_0.jpg",
+      "wordId": 19,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "pineapple",
+      "imageSource": "http://cdn1.medicalnewstoday.com/content/images/articles/276/276903/pineapple.jpg",
+      "wordId": 20,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "mango",
+      "imageSource": "http://myworldtoday.net/wp-content/uploads/2016/12/mmn.jpg",
+      "wordId": 21,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "banana",
+      "imageSource": "https://media.mercola.com/assets/images/foodfacts/banana-og.jpg",
+      "wordId": 22,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "apple",
+      "imageSource": "http://sites.psu.edu/siowfa15/wp-content/uploads/sites/29639/2015/09/04_Apples.jpg",
+      "wordId": 23,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "orange",
+      "imageSource": "http://pngimg.com/uploads/orange/orange_PNG786.png",
+      "wordId": 24,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "cucumber",
+      "imageSource": "https://www.homenaturalcures.com/wp-content/uploads/cucumbers.jpg",
+      "wordId": 25,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "tomato",
+      "imageSource": "https://upload.wikimedia.org/wikipedia/commons/8/88/Bright_red_tomato_and_cross_section02.jpg",
+      "wordId": 26,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "pepper",
+      "imageSource": "http://weknowyourdreams.com/image.php?pic=/images/pepper/pepper-05.jpg",
+      "wordId": 27,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "onion",
+      "imageSource": "http://dreamicus.com/data/onion/onion-02.jpg",
+      "wordId": 28,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
     }
   ],
-  "nextId": 10
+  "nextId": 29
 }

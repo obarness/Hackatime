@@ -59,7 +59,7 @@
 		var childId = getIdByText(childName) ; 
 
 		addChild(parentId,childId);
-		res.end();
+		res.sendFile(__dirname + '/html/index.html');
 		
 	});
 
@@ -111,18 +111,12 @@
 		res.send(JSON.stringify(topTen));
 
 	});
-
-	app.post('/incrementCounter', function(req,res) {
-
-		var wordId = req.body.wordId;
+	
+	app.get(/.incrementCounter_*/, function(req,res) {
+		var wordId =  req.originalUrl.substr('/incrementCounter_'.length);
 		incrementCounter(wordId);
 
 	});
-
-
-
-
-
 
 function addWord(word, imageSrc, id){
 	const low = require('lowdb')

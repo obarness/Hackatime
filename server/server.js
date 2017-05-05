@@ -1,4 +1,3 @@
-
 	var http = require('http');
 	var path = require('path');
 	var bodyParser = require('body-parser');
@@ -330,8 +329,6 @@ function decrementCounter(wordId){
    
 	 } 	
 }
-<<<<<<< HEAD
-=======
 
 //this code was found on stackoverflow:
 function shuffle(array) {
@@ -352,4 +349,3 @@ function shuffle(array) {
 
   return array;
 }
->>>>>>> 07c593427fed2d86e76a1a163da2d3b66ad613b2

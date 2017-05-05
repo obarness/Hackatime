@@ -118,6 +118,13 @@
 
 	});
 
+		app.get(/.decrementCounter_*/, function(req,res) {
+		var wordId =  req.originalUrl.substr('/decrementCounter_'.length);
+		decrementCounter(wordId);
+
+	});
+
+
 function addWord(word, imageSrc, id){
 	const low = require('lowdb')
     const db = low('db.json'); 	
@@ -300,6 +307,27 @@ function incrementCounter(wordId){
    	 	var counter = parseInt(obj.requestCount)+1;
   		 db.set('words['+i+'].requestCount',counter.toString())
  		 .write()
+  	 	 }
+   
+	 } 	
+
+
+}
+
+function decrementCounter(wordId){
+	const low = require('lowdb')
+    const db = low('db.json'); 	
+ 	var words = db.get('words').write();
+ 	
+ 	for(var i = 0; i < words.length; i++) {
+   	 var obj = words[i];
+   	 
+   	 if(obj.wordId==wordId){
+   	 	var counter = parseInt(obj.requestCount)-1;
+   	 	if(counter>-1){
+	  		 db.set('words['+i+'].requestCount',counter.toString())
+	 		 .write()
+ 		}
   	 	 }
    
 	 } 	

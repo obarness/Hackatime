@@ -115,14 +115,14 @@
 	app.get(/.incrementCounter_*/, function(req,res) {
 		var wordId =  req.originalUrl.substr('/incrementCounter_'.length);
 		incrementCounter(wordId);
-		res.send(JSON.stringify('[]'));
+		res.send(JSON.stringify([]));
 
 	});
 
 		app.get(/.decrementCounter_*/, function(req,res) {
 		var wordId =  req.originalUrl.substr('/decrementCounter_'.length);
 		decrementCounter(wordId);
-		res.send(JSON.stringify('[]'))
+		res.send(JSON.stringify([]))
 
 	});
 

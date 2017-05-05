@@ -24,6 +24,9 @@
         <activity
             android:name=".WordCardActivity"
             android:label="WordCardActivity"/>
+        <activity
+            android:name=".TrainingActivity"
+            android:label="TrainingActivity"/>
     </application>
 
 </manifest>

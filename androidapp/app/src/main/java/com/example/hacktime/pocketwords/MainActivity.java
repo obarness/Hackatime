@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_main);
+        Button training_btn = (Button) findViewById(R.id.training_activity);
+
         utils.words.clear();
 
-        setContentView(R.layout.activity_main);
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -65,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
         ttsp(null);
     }
+
+    public void startTrianing(View view)
+    {
+        Intent intent = new Intent (this, TrainingActivity.class);
+        startActivity(intent);
+    }
+
     private void initViews(){
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -74,8 +85,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<WordCard> wordcards = prepareData();
         WordGrid adapter = new WordGrid(getApplicationContext(),wordcards);
         recyclerView.setAdapter(adapter);
-
     }
+
+
+
     private ArrayList<WordCard> prepareData(){
         ArrayList<WordCard> word_cards = new ArrayList<>();
         Set set = utils.words.entrySet();

@@ -2,30 +2,38 @@
 	<head>
 	<meta charset="utf-8"/>
 	<title> Hackatime</title>
-
-	
 	<style>
-	.dropdown {
-	    position: relative;
-	    display: inline-block;
-	}
-
-	.dropdown-content {
-	    display: none;
-	    position: absolute;
-	    background-color: #f9f9f9;
-	    min-width: 160px;
-	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	    padding: 12px 16px;
-	    z-index: 1;
-	}
-
-	.dropdown:hover .dropdown-content {
-	    display: block;
-	}
+		.select-wrapper:before{
+    content: "";
+    position:absolute;
+    right: 5px;
+    top:8px;
+    border-width: 5px 5px 5px 5px;
+    border-style: solid;
+    border-color: #666666 transparent  transparent  transparent ;
+    z-index:3;
+    pointer-events:none; /* <-- */
+}
+.select-wrapper:after {
+    content:"";
+    display:block;
+    position:absolute;
+    top:0px;
+    bottom:0px;
+    width:20px;
+    right:0px;
+    border-left:1px solid #bababa;
+    background-color:#ededed;
+    -webkit-border-top-right-radius:5px;
+    -moz-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    -moz-border-bottom-right-radius:5px;
+    border-bottom-right-radius:5px;
+    pointer-events:none; /* <-- */
+}
 	</style>
 
-	
 	</head>
 
 	<body>
@@ -64,6 +72,8 @@
 		  </select>
 		  <input type="submit" value="addParent" />	</input>
 		</form>
+
+
 
 		<!--
 		<form id="incrementCounter"  name="incrementCounter" action="/incrementCounter" method="post">

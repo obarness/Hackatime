@@ -278,6 +278,7 @@ function getTopTen(){
 	const low = require('lowdb')
     const db = low('db.json'); 	
  	var words = db.get('words').write();
+ 	shuffle(words);
  	words.sort(function(a, b) {
     return parseInt(b.requestCount) - parseInt(a.requestCount);
 	});
@@ -329,3 +330,26 @@ function decrementCounter(wordId){
    
 	 } 	
 }
+<<<<<<< HEAD
+=======
+
+//this code was found on stackoverflow:
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+>>>>>>> 07c593427fed2d86e76a1a163da2d3b66ad613b2

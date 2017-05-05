@@ -11,7 +11,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -20,16 +23,21 @@ import com.squareup.picasso.Picasso;
 
 public class WordCardActivity extends AppCompatActivity {
 
+    private String jsonStr;
+    Utils utils = new Utils();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        final RequestQueue queue = Volley.newRequestQueue(this);
+
         setContentView(R.layout.activity_word_card);
         Intent intent = getIntent();
-        String word_text_m = intent.getStringExtra(WordGrid.WORD_TEXT);
+        final String word_text_m = intent.getStringExtra(WordGrid.WORD_TEXT);
         TextView textView = (TextView) findViewById(R.id.word_text);
         textView.setText(word_text_m);
-        String word_id = intent.getStringExtra(WordGrid.WORD_ID);
+        final String word_id = intent.getStringExtra(WordGrid.WORD_ID);
 
         ImageView imageView = (ImageView) findViewById(R.id.word_image);
         Picasso.with(this)
@@ -44,6 +52,12 @@ public class WordCardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                utils.getHttpQuery("http://172.22.6.60/incrementCounter_" + word_id, queue, new Utils.VolleyCallback(){
+                    @Override
+                    public void onSuccess(String result){
+                        Toast.makeText(getApplication() ,"\"" + word_text_m + "\" Was added to Training", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }

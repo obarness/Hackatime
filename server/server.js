@@ -1,4 +1,3 @@
-
 	var http = require('http');
 	var path = require('path');
 	var bodyParser = require('body-parser');
@@ -115,8 +114,17 @@
 	app.get(/.incrementCounter_*/, function(req,res) {
 		var wordId =  req.originalUrl.substr('/incrementCounter_'.length);
 		incrementCounter(wordId);
+		res.send(JSON.stringify([]));
 
 	});
+
+		app.get(/.decrementCounter_*/, function(req,res) {
+		var wordId =  req.originalUrl.substr('/decrementCounter_'.length);
+		decrementCounter(wordId);
+		res.send(JSON.stringify([]))
+
+	});
+
 
 function addWord(word, imageSrc, id){
 	const low = require('lowdb')
@@ -224,9 +232,6 @@ function getChildrenOf(parentId){
  }
 }
 
-
-
-
 function getRoots(){
 
 	const low = require('lowdb')
@@ -272,11 +277,10 @@ function getTopTen(){
 	const low = require('lowdb')
     const db = low('db.json'); 	
  	var words = db.get('words').write();
+ 	shuffle(words);
  	words.sort(function(a, b) {
     return parseInt(b.requestCount) - parseInt(a.requestCount);
 	});
-
-
 
  	var stop = Math.min(10,words.length)
  	var topTen = [];
@@ -305,4 +309,43 @@ function incrementCounter(wordId){
 	 } 	
 
 
+}
+
+function decrementCounter(wordId){
+	const low = require('lowdb')
+    const db = low('db.json'); 	
+ 	var words = db.get('words').write();
+ 	
+ 	for(var i = 0; i < words.length; i++) {
+   	 var obj = words[i];
+   	 
+   	 if(obj.wordId==wordId){
+   	 	var counter = parseInt(obj.requestCount)-1;
+   	 	if(counter>-1){
+	  		 db.set('words['+i+'].requestCount',counter.toString())
+	 		 .write()
+ 		}
+  	 	 }
+   
+	 } 	
+}
+
+//this code was found on stackoverflow:
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }

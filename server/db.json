@@ -25,7 +25,7 @@
       "requestCount": "0"
     },
     {
-      "text": "fridge",
+      "text": "מקרר",
       "imageSource": "https://s-media-cache-ak0.pinimg.com/736x/b1/9f/4c/b19f4c9303325f8b13aa96f652c4c278.jpg",
       "wordId": 4,
       "children": ",11,10,12,13",
@@ -66,7 +66,7 @@
     },
     {
       "text": "fruit",
-      "imageSource": "http://www.potentash.com/wp-content/uploads/2015/05/king-julien.png",
+      "imageSource": "https://s-media-cache-ak0.pinimg.com/736x/08/37/b4/0837b42617824555d198e9d949d32c6d.jpg",
       "wordId": 10,
       "children": ",20,21,22,23,24",
       "isRoot": "false",
@@ -215,7 +215,143 @@
       "children": "",
       "isRoot": "false",
       "requestCount": "0"
+    },
+    {
+      "text": "medical",
+      "imageSource": "https://media.licdn.com/mpr/mpr/shrinknp_800_800/AAEAAQAAAAAAAAIsAAAAJDg4MjRjZGIwLTkzODktNDE3NC05NTI0LTUzNzU1ZjIzYTVhZg.jpg",
+      "wordId": 29,
+      "children": ",30,31,32",
+      "isRoot": "true",
+      "requestCount": "0"
+    },
+    {
+      "text": "clinic",
+      "imageSource": "https://images1-fabric.practo.com/dr-batra-s-positive-health-clinic-pvt-ltd-chennai-1455794087-56c5a7a766f6b.jpg/large",
+      "wordId": 30,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "medication",
+      "imageSource": "http://eastsidefriendsofseniors.org/wp-content/uploads/2013/01/Medications-for-blog-1-23-132.jpg",
+      "wordId": 31,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "anatomy",
+      "imageSource": "https://appolicious.com/wp-content/uploads/2010/04/anatomy.jpg",
+      "wordId": 32,
+      "children": ",33,34,35",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "face",
+      "imageSource": "https://imgs-steps-dragoart-386112.c.cdn77.org/how-to-draw-a-human-face-step-7_1_000000040809_3.jpg",
+      "wordId": 33,
+      "children": ",44,45",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "upper body",
+      "imageSource": "http://s-media-cache-ak0.pinimg.com/736x/7f/53/0d/7f530da6b43f3c95a8dd45cb9b9abd4c.jpg",
+      "wordId": 34,
+      "children": ",39,40,41,42,43",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "lower body",
+      "imageSource": "https://s-media-cache-ak0.pinimg.com/736x/ec/72/d0/ec72d0f7b2702a767eac0105693aa79e.jpg",
+      "wordId": 35,
+      "children": ",36,37,38",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "leg",
+      "imageSource": "http://media.ottobock.com/_web-site/service-fabrication/lower-limb/silicone_cover_leg_prosthesis/images/_35311_dsc8645_169_4c_wb_4c_1_1_teaser_onecolumn_border.jpg",
+      "wordId": 36,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "feet",
+      "imageSource": "http://img12.deviantart.net/bfad/i/2013/048/6/8/feet_study_1_by_irysching-d5vc75m.jpg",
+      "wordId": 37,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "thighs",
+      "imageSource": "https://thumb9.shutterstock.com/display_pic_with_logo/279553/556351882/stock-photo-concept-or-conceptual-d-illustration-human-upper-leg-anatomy-or-anatomical-and-muscle-isolated-on-556351882.jpg",
+      "wordId": 38,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "arms",
+      "imageSource": "http://www.clipartkid.com/images/15/arm-hand-clip-art-at-clker-com-vector-clip-art-online-royalty-bMbKAK-clipart.png",
+      "wordId": 39,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "hands",
+      "imageSource": "http://pngimg.com/uploads/hands/hands_PNG942.png",
+      "wordId": 40,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "chest",
+      "imageSource": "https://s-media-cache-ak0.pinimg.com/originals/6b/e9/1a/6be91ad9e825ed18b66a3f9864e7da23.jpg",
+      "wordId": 41,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "back",
+      "imageSource": "https://cdn.muscleandstrength.com/sites/default/files/field/image/workout/muscular-back-450.jpg",
+      "wordId": 42,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "shoulders",
+      "imageSource": "https://kureadesu.files.wordpress.com/2013/05/shoulders.gif",
+      "wordId": 43,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "nose",
+      "imageSource": "https://cms-assets.tutsplus.com/uploads/users/587/posts/23626/image/Nose-tutorial-15-1.jpg",
+      "wordId": 44,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
+    },
+    {
+      "text": "eyes",
+      "imageSource": "http://animal-dream.com/data_images/eyes/eyes4.jpg",
+      "wordId": 45,
+      "children": "",
+      "isRoot": "false",
+      "requestCount": "0"
     }
   ],
-  "nextId": 29
+  "nextId": 46
 }

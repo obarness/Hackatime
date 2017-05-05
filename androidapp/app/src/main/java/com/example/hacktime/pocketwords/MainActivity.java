@@ -2,6 +2,8 @@ package com.example.hacktime.pocketwords;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String jsonStr;
     Utils utils = new Utils();
+    TextToSpeech ttobj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ttsp(null);
     }
 
     public void startTrianing(View view)
@@ -99,4 +104,17 @@ public class MainActivity extends AppCompatActivity {
         return word_cards;
     }
 
+    public void ttsp(final String word){
+        ttobj = new TextToSpeech(this.getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    ttobj.setLanguage(Locale.UK);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ttobj.speak(word, TextToSpeech.QUEUE_FLUSH, null, null);
+                    }
+                }
+            }
+        });
+    }
 }

@@ -115,12 +115,14 @@
 	app.get(/.incrementCounter_*/, function(req,res) {
 		var wordId =  req.originalUrl.substr('/incrementCounter_'.length);
 		incrementCounter(wordId);
+		res.send(JSON.stringify('[]'));
 
 	});
 
 		app.get(/.decrementCounter_*/, function(req,res) {
 		var wordId =  req.originalUrl.substr('/decrementCounter_'.length);
 		decrementCounter(wordId);
+		res.send(JSON.stringify('[]'))
 
 	});
 
@@ -231,9 +233,6 @@ function getChildrenOf(parentId){
  }
 }
 
-
-
-
 function getRoots(){
 
 	const low = require('lowdb')
@@ -283,8 +282,6 @@ function getTopTen(){
     return parseInt(b.requestCount) - parseInt(a.requestCount);
 	});
 
-
-
  	var stop = Math.min(10,words.length)
  	var topTen = [];
  	for(var i = 0; i < stop; i++) {
@@ -331,6 +328,4 @@ function decrementCounter(wordId){
   	 	 }
    
 	 } 	
-
-
 }

@@ -6,7 +6,7 @@
       "wordId": 1,
       "children": ",2,4,14",
       "isRoot": "true",
-      "requestCount": "2"
+      "requestCount": "0"
     },
     {
       "text": "silverware",
@@ -14,7 +14,7 @@
       "wordId": 2,
       "children": ",5,6,7,8",
       "isRoot": "false",
-      "requestCount": "1"
+      "requestCount": "0"
     },
     {
       "text": "garden",
@@ -25,7 +25,7 @@
       "requestCount": "0"
     },
     {
-      "text": "מקרר",
+      "text": "fridge",
       "imageSource": "https://s-media-cache-ak0.pinimg.com/736x/b1/9f/4c/b19f4c9303325f8b13aa96f652c4c278.jpg",
       "wordId": 4,
       "children": ",11,10,12,13",
@@ -69,7 +69,7 @@
       "imageSource": "https://s-media-cache-ak0.pinimg.com/736x/08/37/b4/0837b42617824555d198e9d949d32c6d.jpg",
       "wordId": 10,
       "children": ",20,21,22,23,24",
-      "isRoot": "false",
+      "isRoot": "true",
       "requestCount": "0"
     },
     {
@@ -77,7 +77,7 @@
       "imageSource": "https://blogs.extension.iastate.edu/spendsmart/files/2014/06/vegetables-variety.jpg",
       "wordId": 11,
       "children": ",25,26,27,28",
-      "isRoot": "false",
+      "isRoot": "true",
       "requestCount": "0"
     },
     {

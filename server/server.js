@@ -36,6 +36,14 @@
 
 		res.sendFile(__dirname + '/html/index.html');
 
+
+	});
+
+		app.get('/style.css', function(req, res) {
+
+		res.sendFile(__dirname + '/html/style.css');
+		
+
 	});
 
 

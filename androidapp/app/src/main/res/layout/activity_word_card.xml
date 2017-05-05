@@ -12,15 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ImageView>
+
     <TextView
         android:id="@+id/word_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
+        android:onClick="clickText"
         android:text="TextView"
-        android:textStyle="bold"
-        android:textSize="40sp"/>
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/add_to_practice"

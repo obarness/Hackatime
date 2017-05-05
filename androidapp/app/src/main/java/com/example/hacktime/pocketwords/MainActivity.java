@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String jsonStr;
     Utils utils = new Utils();
-    TextToSpeech ttobj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ttsp(null);
     }
 
     public void startTrianing(View view)
@@ -104,17 +102,4 @@ public class MainActivity extends AppCompatActivity {
         return word_cards;
     }
 
-    public void ttsp(final String word){
-        ttobj = new TextToSpeech(this.getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if(status != TextToSpeech.ERROR) {
-                    ttobj.setLanguage(Locale.UK);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ttobj.speak(word, TextToSpeech.QUEUE_FLUSH, null, null);
-                    }
-                }
-            }
-        });
-    }
 }

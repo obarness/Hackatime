@@ -27,12 +27,18 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private String jsonStr;
-    HashMap<String, List<String>> words = new HashMap<>();
+    Utils utils = new Utils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        utils.words.clear();
+
         setContentView(R.layout.activity_main);
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
 
         Intent intent = getIntent();
         String url = "http://172.22.6.60/";
@@ -43,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
         //example of how to pull data from server
         //result will hold a string of the json data
-        getHttpQuery(url, new VolleyCallback(){
+        utils.getHttpQuery(url, queue, new Utils.VolleyCallback(){
            @Override
             public void onSuccess(String result){
                jsonStr = new String(result);
-               jsonStringToArrays(jsonStr);
+               utils.jsonStringToArrays(jsonStr);
                initViews();
             }
         });
@@ -67,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private ArrayList<WordCard> prepareData(){
         ArrayList<WordCard> word_cards = new ArrayList<>();
-        Set set = words.entrySet();
+        Set set = utils.words.entrySet();
         Iterator iterator = set.iterator();
         while(iterator.hasNext()) {
             Map.Entry mentry = (Map.Entry)iterator.next();
@@ -78,52 +84,6 @@ public class MainActivity extends AppCompatActivity {
             word_cards.add(wordcard);
         }
         return word_cards;
-    }
-
-    private void getHttpQuery(String url,final VolleyCallback callback) {
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        // Request a string response from the provided URL.
-        JsonArrayRequest jsObjRequest = new JsonArrayRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        callback.onSuccess(response.toString());
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        callback.onSuccess(error.getMessage());
-                    }
-                });
-        // Add the request to the RequestQueue.
-        queue.add(jsObjRequest);
-    }
-    public interface VolleyCallback{
-        void onSuccess(String result);
-    }
-
-    public void refreshView()
-    {
-
-    }
-
-
-    private void jsonStringToArrays(String str){
-        try {
-            JSONArray jsonArr = new JSONArray(str);
-            for(int i=0;i<jsonArr.length();i++){
-                List<String> list = new ArrayList<>();
-                JSONObject e = jsonArr.getJSONObject(i);
-                list.add(e.getString("imageSource"));
-                list.add(e.getString("wordId"));
-                words.put(e.getString("text"),list);
-            }
-        } catch (final JSONException e) {
-            System.out.println("Json parsing error: " + e.getMessage());
-        }
     }
 
 }

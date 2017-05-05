@@ -23,19 +23,29 @@ public class WordCardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("onCreate");
 
         setContentView(R.layout.activity_word_card);
         Intent intent = getIntent();
         String word_text_m = intent.getStringExtra(WordGrid.WORD_TEXT);
         TextView textView = (TextView) findViewById(R.id.word_text);
         textView.setText(word_text_m);
+        String word_id = intent.getStringExtra(WordGrid.WORD_ID);
 
         ImageView imageView = (ImageView) findViewById(R.id.word_image);
         Picasso.with(this)
                 .load(intent.getStringExtra(WordGrid.WORD_IMG))
                 .resize(250, 200)
+                .error(R.drawable.reut_bg)
+                .placeholder(R.drawable.reut_bg)
                 .into(imageView);
+
+        ImageView imageView1 = (ImageView) findViewById(R.id.add_to_practice);
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 
 }

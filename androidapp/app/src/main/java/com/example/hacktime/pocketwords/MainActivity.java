@@ -1,5 +1,6 @@
 package com.example.hacktime.pocketwords;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,23 +20,30 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     private String jsonStr;
-    HashMap<String, String> words = new HashMap<>();
+    HashMap<String, List<String>> words = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        String url = "http://172.22.6.60/";
+        if (intent.getStringExtra(WordGrid.WORD_ID)!=null)
+            url = url + "getChildrenOf_" + intent.getStringExtra(WordGrid.WORD_ID);
+        else
+            url = url + "getRoots";
 
         //example of how to pull data from server
         //result will hold a string of the json data
-        getHttpQuery("http://172.22.6.60/getRoots",new VolleyCallback(){
+        getHttpQuery(url, new VolleyCallback(){
            @Override
             public void onSuccess(String result){
                jsonStr = new String(result);
@@ -65,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
             Map.Entry mentry = (Map.Entry)iterator.next();
             WordCard wordcard = new WordCard();
             wordcard.setWord_text(mentry.getKey().toString());
-            wordcard.setWord_image_url(mentry.getValue().toString());
+            wordcard.setWord_image_url(((ArrayList)mentry.getValue()).get(0).toString());
+            wordcard.setWord_id(((ArrayList)mentry.getValue()).get(1).toString());
             word_cards.add(wordcard);
         }
         return word_cards;
@@ -106,8 +115,11 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONArray jsonArr = new JSONArray(str);
             for(int i=0;i<jsonArr.length();i++){
+                List<String> list = new ArrayList<>();
                 JSONObject e = jsonArr.getJSONObject(i);
-                words.put(e.getString("text"),e.getString("imageSource"));
+                list.add(e.getString("imageSource"));
+                list.add(e.getString("wordId"));
+                words.put(e.getString("text"),list);
             }
         } catch (final JSONException e) {
             System.out.println("Json parsing error: " + e.getMessage());

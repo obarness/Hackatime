@@ -2,37 +2,7 @@
 	<head>
 	<meta charset="utf-8"/>
 	<title> Hackatime</title>
-	<style>
-		.select-wrapper:before{
-    content: "";
-    position:absolute;
-    right: 5px;
-    top:8px;
-    border-width: 5px 5px 5px 5px;
-    border-style: solid;
-    border-color: #666666 transparent  transparent  transparent ;
-    z-index:3;
-    pointer-events:none; /* <-- */
-}
-.select-wrapper:after {
-    content:"";
-    display:block;
-    position:absolute;
-    top:0px;
-    bottom:0px;
-    width:20px;
-    right:0px;
-    border-left:1px solid #bababa;
-    background-color:#ededed;
-    -webkit-border-top-right-radius:5px;
-    -moz-border-top-right-radius:5px;
-    border-top-right-radius:5px;
-    -webkit-border-bottom-right-radius:5px;
-    -moz-border-bottom-right-radius:5px;
-    border-bottom-right-radius:5px;
-    pointer-events:none; /* <-- */
-}
-	</style>
+
 
 	</head>
 
@@ -45,14 +15,16 @@
 			<input type="submit" value="addWord" />	</input>
 		</form>
 
-		
-
+	
 		<form  id="makeRoot" name="makeRoot" action="/makeRoot" method="post">
+		
 			<select id="selectTopCategory" name="selectTopCategory">
 		   		 <option>selectWord</option>
 			  </select>
-			<input type="submit" value="makeRoot" />	</input>
+			 
+			<input type="submit" value="makeRoot" /> </input>
 		</form>
+		
 
 
 		<form  id="removeRoot" name="removeRoot" action="/removeRoot" method="post">
@@ -134,6 +106,7 @@ xmlhttp.onreadystatechange = function() {
 		for(var i = 0; i < textArray.length; i++) {
 		   var opt = textArray[i];
 		    var el = document.createElement("option");
+
 		    el.textContent = opt;
 		    el.value = opt;
 		    select.appendChild(el);

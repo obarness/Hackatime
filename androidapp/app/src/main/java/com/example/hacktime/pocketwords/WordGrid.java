@@ -37,7 +37,7 @@ public class WordGrid extends RecyclerView.Adapter<WordGrid.ViewHolder> {
     public void onBindViewHolder(final WordGrid.ViewHolder viewHolder, final int i) {
 
         viewHolder.text_word.setText(word_cards.get(i).getWord_text());
-        Picasso.with(context).load(word_cards.get(i).getWord_image_url()).error(R.drawable.reut_bg).placeholder(R.drawable.reut_bg)
+        Picasso.with(context).load(word_cards.get(i).getWord_image_url()).error(R.drawable.reut_bg).placeholder(R.drawable.progress_animation)
                 .resize(240, 240).into(viewHolder.img_word);
         viewHolder.img_word.setOnClickListener(new View.OnClickListener() {
             @Override

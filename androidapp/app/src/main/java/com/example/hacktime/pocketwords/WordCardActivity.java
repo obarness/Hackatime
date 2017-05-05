@@ -36,14 +36,14 @@ public class WordCardActivity extends AppCompatActivity {
                 .load(intent.getStringExtra(WordGrid.WORD_IMG))
                 .resize(250, 200)
                 .error(R.drawable.reut_bg)
-                .placeholder(R.drawable.reut_bg)
+                .placeholder(R.drawable.progress_animation)
                 .into(imageView);
 
         ImageView imageView1 = (ImageView) findViewById(R.id.add_to_practice);
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
     }

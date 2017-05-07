@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         Intent intent = getIntent();
-        String url = "http://172.22.6.60/";
+        String url = Utils.getHttpAdress();
         if (intent.getStringExtra(WordGrid.WORD_ID)!=null)
             url = url + "getChildrenOf_" + intent.getStringExtra(WordGrid.WORD_ID);
         else

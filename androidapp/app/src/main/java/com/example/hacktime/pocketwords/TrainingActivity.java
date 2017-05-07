@@ -53,7 +53,7 @@ public class TrainingActivity extends AppCompatActivity {
         uk_img = (ImageView) findViewById(R.id.didnt_knew);
 
 
-        utils.getHttpQuery("http://172.22.6.60/getTopTen", queue, new Utils.VolleyCallback() {
+        utils.getHttpQuery(Utils.getHttpAdress() + "getTopTen", queue, new Utils.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 jsonStr = new String(result);
@@ -95,7 +95,7 @@ public class TrainingActivity extends AppCompatActivity {
     public void clickKnewOrDidnt(View view)
     {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String updateUrl = "http://172.22.6.60/";
+        String updateUrl = Utils.getHttpAdress();
         if (view.getId() == k_img.getId())
             updateUrl = updateUrl + "incrementCounter_";
         else

@@ -44,6 +44,11 @@ public class Utils {
         void onSuccess(String result);
     }
 
+    public static String getHttpAdress()
+    {
+        return ("http://10.124.184.72/");
+    }
+
     public static void jsonStringToArrays(String str){
         try {
             JSONArray jsonArr = new JSONArray(str);

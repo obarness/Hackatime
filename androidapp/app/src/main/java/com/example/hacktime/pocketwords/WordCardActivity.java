@@ -58,7 +58,7 @@ public class WordCardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                utils.getHttpQuery("http://172.22.6.60/incrementCounter_" + word_id, queue, new Utils.VolleyCallback(){
+                utils.getHttpQuery(Utils.getHttpAdress() + "incrementCounter_" + word_id, queue, new Utils.VolleyCallback(){
                     @Override
                     public void onSuccess(String result){
                         Toast.makeText(getApplication() ,"\"" + word_text_m + "\" Was added to Training", Toast.LENGTH_LONG).show();
